@@ -1,0 +1,12 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/contentModel.xml
+/modules.xml
+/.idea.Advent2022.iml
+# Editor-based HTTP Client requests
+/httpRequests/
+Advent2022/bin/
+Advent2022/obj/
