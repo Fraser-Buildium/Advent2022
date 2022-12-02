@@ -2,4 +2,6 @@
 
 using Advent2022;
 
-Day1.Execute();
+// Day1.Execute();
+
+Day2.Execute();
