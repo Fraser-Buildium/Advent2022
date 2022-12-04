@@ -11,31 +11,25 @@ public class Day3
 
         foreach (var line in lines)
         {
-            var compartment1 = new HashSet<char>();
+            var compartment1 = new HashSet<char>(line[..(line.Length/2)]);
+            var compartment2 = new HashSet<char>(line[(line.Length/2)..]);
+            var items = compartment1
+                .Intersect(compartment2)
+                .ToList();
 
-            var compartment1String = line.Substring(0, line.Length/2);
-            var compartment1Contents =compartment1String.Distinct();
-            foreach (var item in compartment1Contents)
+            if (items.Any())
             {
-                compartment1.Add(item);
-            }
-
-            var compartment2String = line.Substring(line.Length/2, line.Length/2);
-            var compartment2Contents = compartment2String.Distinct();
-            foreach (var item in compartment2Contents)
-            {
-                if (compartment1.Contains(item))
+                Console.Out.WriteLine($"{line[..(line.Length / 2)]} {line[(line.Length / 2)..]}:");
+                foreach (var item in items)
                 {
                     var priority = Prioritize(item);
-                    Console.Out.Write($"{compartment1String} {compartment2String} - {item}: {priority}");
+                    Console.Out.WriteLine($"  {item}: {priority} ");
                     sum += priority;
                 }
             }
-
-            Console.Out.WriteLine();
         }
         
-        Console.WriteLine($"Total sum: {sum}");
+        Console.Out.WriteLine($"Total sum: {sum}");
         return sum;
     }
 
@@ -50,7 +44,10 @@ public class Day3
             var rucksack2 = new HashSet<char>(elfGroup[1]);
             var rucksack3 = new HashSet<char>(elfGroup[2]);
 
-            var badge = rucksack1.Intersect(rucksack2).Intersect(rucksack3).Single();
+            var badge = rucksack1
+                .Intersect(rucksack2)
+                .Intersect(rucksack3)
+                .Single();
             var priority = Prioritize(badge);
             Console.Out.WriteLine($"{badge} - {priority}");
             sum += priority;
