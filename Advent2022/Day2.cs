@@ -2,106 +2,77 @@
 
 public class Day2
 {
-    public const int Rock = 1;
-    public const int Paper = 2;
-    public const int Scissors = 3;
-    public const int Lose = 0;
-    public const int Draw = 3;
-    public const int Win = 6;
+    private const int Rock = 1;
+    private const int Paper = 2;
+    private const int Scissors = 3;
+    
+    private const int Lose = 0;
+    private const int Draw = 3;
+    private const int Win = 6;
+    
     public static void Execute()
     {
-        int score1 = 0;
-        int score2 = 0;
+        var score1 = 0;
+        var score2 = 0;
         var lines = File.ReadAllLines("input2.txt");
         foreach (var line in lines)
         {
-            switch (line)
-            {
-                case "A X": // Rock, Rock
-                    score1 += Rock + Draw;
-                    break;
-                
-                case "A Y": // Rock, Paper
-                    score1 += Paper + Win;
-                    break;
-                
-                case "A Z": // Rock, Scissors
-                    score1 += Scissors + Lose;
-                    break;
-                
-                case "B X": // Paper, Rock
-                    score1 += Rock + Lose;
-                    break;
-                
-                case "B Y": // Paper, Paper
-                    score1 += Paper + Draw;
-                    break;
-                
-                case "B Z": // Paper, Scissors
-                    score1 += Scissors + Win;
-                    break;
-                
-                case "C X": // Scissors, Rock
-                    score1 += Rock + Win;
-                    break;
-                
-                case "C Y": // Scissors, Paper
-                    score1 += Paper + Lose;
-                    break;
-                
-                case "C Z": // Scissors, Scissors
-                    score1 += Scissors + Draw;
-                    break;
-                
-                default:
-                    Console.Out.WriteLine($"Unmatched: {line}");
-                    break;
-            }
-            
-            switch (line)
-            {
-                case "A X": // Rock, Lose
-                    score2 += Scissors + Lose;
-                    break;
-                
-                case "A Y": // Rock, Draw
-                    score2 += Rock + Draw;
-                    break;
-                
-                case "A Z": // Rock, Win
-                    score2 += Paper + Win;
-                    break;
-                
-                case "B X": // Paper, Lose
-                    score2 += Rock + Lose;
-                    break;
-                
-                case "B Y": // Paper, Draw
-                    score2 += Paper + Draw;
-                    break;
-                
-                case "B Z": // Paper, Win
-                    score2 += Scissors + Win;
-                    break;
-                
-                case "C X": // Scissors, Lose
-                    score2 += Paper + Lose;
-                    break;
-                
-                case "C Y": // Scissors, Draw
-                    score2 += Scissors + Draw;
-                    break;
-                
-                case "C Z": // Scissors, Win
-                    score2 += Rock + Win;
-                    break;
-                
-                default:
-                    Console.Out.WriteLine($"Unmatched: {line}");
-                    break;
-            }
+            score1 += Score1(line);
+            score2 += Score2(line);
         }
         Console.Out.WriteLine(score1);
         Console.Out.WriteLine(score2);
+    }
+
+    private static int Score1(string line)
+    {
+        return line switch
+        {
+            "A X" => // Rock, Rock
+                Rock + Draw,
+            "A Y" => // Rock, Paper
+                Paper + Win,
+            "A Z" => // Rock, Scissors
+                Scissors + Lose,
+            "B X" => // Paper, Rock
+                Rock + Lose,
+            "B Y" => // Paper, Paper
+                Paper + Draw,
+            "B Z" => // Paper, Scissors
+                Scissors + Win,
+            "C X" => // Scissors, Rock
+                Rock + Win,
+            "C Y" => // Scissors, Paper
+                Paper + Lose,
+            "C Z" => // Scissors, Scissors
+                Scissors + Draw,
+            _ => throw new Exception($"Unmatched: {line}")
+        };
+    }
+
+    private static int Score2(string line)
+    {
+        return line switch
+        {
+            "A X" => // Rock, Lose
+                Scissors + Lose,
+            "A Y" => // Rock, Draw
+                Rock + Draw,
+            "A Z" => // Rock, Win
+                Paper + Win,
+            "B X" => // Paper, Lose
+                Rock + Lose,
+            "B Y" => // Paper, Draw
+                Paper + Draw,
+            "B Z" => // Paper, Win
+                Scissors + Win,
+            "C X" => // Scissors, Lose
+                Paper + Lose,
+            "C Y" => // Scissors, Draw
+                Scissors + Draw,
+            "C Z" => // Scissors, Win
+                Rock + Win,
+            _ => throw new Exception($"Unmatched: {line}")
+        };
     }
 }
