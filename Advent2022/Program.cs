@@ -6,7 +6,10 @@ using Advent2022;
 
 // Day2.Execute();
 
-var answer1 = Day3.Execute();
-var answer2 = Day3.Execute2();
-Console.Out.WriteLine($"Answer 1: {answer1}");
-Console.Out.WriteLine($"Answer 2: {answer2}");
+// var answer1 = Day3.Execute();
+// var answer2 = Day3.Execute2();
+// Console.Out.WriteLine($"Answer 1: {answer1}");
+// Console.Out.WriteLine($"Answer 2: {answer2}");
+
+Day4.Execute();
+Day4.Execute2();
