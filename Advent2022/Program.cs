@@ -11,5 +11,8 @@ using Advent2022;
 // Console.Out.WriteLine($"Answer 1: {answer1}");
 // Console.Out.WriteLine($"Answer 2: {answer2}");
 
-Day4.Execute();
-Day4.Execute2();
+// Day4.Execute();
+// Day4.Execute2();
+
+Day5.Execute();
+Day5.Execute2();
