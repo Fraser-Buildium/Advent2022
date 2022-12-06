@@ -33,7 +33,7 @@ public class Day5
             {9, new Stack<char>("LGSRBNVM")}
         };
 
-        var movePattern = new Regex("move (?<stack>[0-9]*) from (?<from>[0-9]*) to (?<to>[0-9]*)");
+        var movePattern = new Regex("move (?<stack>[0-9]+) from (?<from>[0-9]+) to (?<to>[0-9]+)");
         foreach (var line in lines)
         {
             var matches = movePattern.Matches(line);
@@ -92,7 +92,7 @@ public class Day5
             {9, new Stack<char>("LGSRBNVM")}
         };
 
-        var movePattern = new Regex("move (?<stack>[0-9]*) from (?<from>[0-9]*) to (?<to>[0-9]*)");
+        var movePattern = new Regex("move (?<stack>[0-9]+) from (?<from>[0-9]+) to (?<to>[0-9]+)");
         foreach (var line in lines)
         {
             var matches = movePattern.Matches(line);
