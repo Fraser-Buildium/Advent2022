@@ -14,5 +14,8 @@ using Advent2022;
 // Day4.Execute();
 // Day4.Execute2();
 
-Day5.Execute();
-Day5.Execute2();
+// Day5.Execute();
+// Day5.Execute2();
+
+Day6.Execute(4);
+Day6.Execute(14);
